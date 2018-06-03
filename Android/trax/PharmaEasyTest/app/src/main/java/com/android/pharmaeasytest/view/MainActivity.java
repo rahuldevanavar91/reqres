@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.android.pharmaeasytest.R;
 import com.android.pharmaeasytest.model.Data;
 import com.android.pharmaeasytest.presenter.UserDataPresenter;
+import com.android.pharmaeasytest.utils.Utils;
 import com.android.pharmaeasytest.view.adapter.UserListAdapter;
 
 import java.util.List;
@@ -45,8 +46,11 @@ public class MainActivity extends AppCompatActivity implements UserDataPresenter
         if (mUserDataPresenter == null) {
             mUserDataPresenter = new UserDataPresenter(this);
         }
-        mUserDataPresenter.getUserList(++mPageNumber);
-
+        if (Utils.isNetworkAvailable(getBaseContext())) {
+            mUserDataPresenter.getUserList(++mPageNumber);
+        } else {
+            Toast.makeText(getBaseContext(), "Please check your network connection", Toast.LENGTH_SHORT).show();
+        }
     }
 
 
