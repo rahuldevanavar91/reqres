@@ -35,7 +35,7 @@ public class UserDetailActivity extends AppCompatActivity {
         setActionBar();
         ButterKnife.bind(this);
         if (getIntent().getExtras() != null) {
-            udateData();
+            updateData();
         }
 
     }
@@ -59,7 +59,7 @@ public class UserDetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void udateData() {
+    private void updateData() {
         Data userData = getIntent().getParcelableExtra(getString(R.string.user_data));
 
 
